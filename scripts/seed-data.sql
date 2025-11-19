@@ -219,3 +219,69 @@ BEGIN
         );
     END LOOP;
 END $$;
+
+-- =========================================
+-- Easter Eggs 🥚
+-- =========================================
+
+-- Ajouter l'établissement UTBM
+INSERT INTO student.etablissement (nom, adresse) VALUES
+    ('UTBM', 'Rue Ernest Thierry-Mieg, 90010 Belfort');
+
+-- Ajouter Laurent Gauthier (étudiant UTBM)
+INSERT INTO student.etudiant (nom, prenom, email, date_naissance, id_etablissement)
+VALUES (
+    'Gauthier',
+    'Laurent',
+    'laurent.gauthier@utbm.fr',
+    '1990-01-01',
+    (SELECT id_etablissement FROM student.etablissement WHERE nom = 'UTBM')
+);
+
+-- Ajouter le cours "Prof de SQL"
+INSERT INTO student.cours (titre, categorie) VALUES
+    ('Prof de SQL', 'Informatique');
+
+-- Inscription de Laurent Gauthier au cours "Prof de SQL"
+INSERT INTO student.inscription (id_etudiant, id_cours, date_inscription)
+VALUES (
+    (SELECT id_etudiant FROM student.etudiant WHERE email = 'laurent.gauthier@utbm.fr'),
+    (SELECT id_cours FROM student.cours WHERE titre = 'Prof de SQL'),
+    '2024-09-01'
+);
+
+-- Note de 20/20 pour Laurent Gauthier dans "Prof de SQL"
+INSERT INTO student.note (id_etudiant, id_cours, valeur, date_note)
+VALUES (
+    (SELECT id_etudiant FROM student.etudiant WHERE email = 'laurent.gauthier@utbm.fr'),
+    (SELECT id_cours FROM student.cours WHERE titre = 'Prof de SQL'),
+    20.00,
+    '2024-10-15'
+);
+
+-- Ajouter Yoan Thirions (étudiant CODA Dijon)
+INSERT INTO student.etudiant (nom, prenom, email, date_naissance, id_etablissement)
+VALUES (
+    'Thirions',
+    'Yoan',
+    'yoan.thirions@coda-school.com',
+    '2000-01-01',
+    (SELECT id_etablissement FROM student.etablissement WHERE nom = 'CODA Dijon')
+);
+
+-- Inscription de Yoan Thirions au cours "Introduction aux Bases de Données" (cours SQL)
+INSERT INTO student.inscription (id_etudiant, id_cours, date_inscription)
+VALUES (
+    (SELECT id_etudiant FROM student.etudiant WHERE email = 'yoan.thirions@coda-school.com'),
+    (SELECT id_cours FROM student.cours WHERE titre = 'Introduction aux Bases de Données'),
+    '2024-09-01'
+);
+
+-- Note de 0.5/20 pour Yoan Thirions dans "Introduction aux Bases de Données"
+INSERT INTO student.note (id_etudiant, id_cours, valeur, date_note)
+VALUES (
+    (SELECT id_etudiant FROM student.etudiant WHERE email = 'yoan.thirions@coda-school.com'),
+    (SELECT id_cours FROM student.cours WHERE titre = 'Introduction aux Bases de Données'),
+    0.50,
+    '2024-10-15'
+);

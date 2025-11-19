@@ -1,0 +1,20 @@
+# Dossier de correction - Ne pas committer les réponses
+correction/
+
+# Docker volumes
+postgres_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
