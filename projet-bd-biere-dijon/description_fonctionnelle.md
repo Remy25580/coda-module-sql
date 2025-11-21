@@ -78,6 +78,8 @@ Les bars peuvent servir plusieurs bières différentes, et plusieurs bières dif
 
 Un référence de bière sert à préciser le prix de telle bière dans tel bar
 
+Un bar ne peut pas proposer plusieurs fois la même bière à des prix différents
+
 
 
 
