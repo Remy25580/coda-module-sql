@@ -50,3 +50,11 @@
 
 | Prix - Bière (via référence) | N..N | définir | chaque prix peut définir différentes bières |
 
+
+
+
+
+
+
+<img src="mcd.jpg" alt="Schéma du mcd" height="400"/>
+
